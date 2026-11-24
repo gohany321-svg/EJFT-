@@ -17,8 +17,14 @@ jobs:
           java-version: 17
       - name: Unzip app
         run: |
+          echo "Files in repo:"; ls -la
           mkdir -p www
-          unzip -o ejft.zip -d www
+          for f in *.zip; do unzip -o "$f" -d www; done
+          if [ ! -f www/index.html ]; then
+            d=$(dirname "$(find www -name index.html | head -1)")
+            cp -r "$d"/. www/
+          fi
+          ls -la www
       - name: Setup Capacitor
         run: |
           npm init -y
