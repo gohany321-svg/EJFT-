@@ -29,7 +29,7 @@ jobs:
         run: |
           npm init -y
           npm i @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
-          echo '{"appId":"com.ejft.app","appName":"EJFT","webDir":"www","plugins":{"CapacitorHttp":{"enabled":true}}}' > capacitor.config.json
+          echo '{"appId":"com.ejft.app","appName":"EJFT","webDir":"www"}' > capacitor.config.json
           npx cap add android
       - name: App icon (optional, needs icon.png inside the zip)
         continue-on-error: true
